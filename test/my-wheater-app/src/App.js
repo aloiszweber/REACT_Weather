@@ -1,16 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
 import Input from './input';
-import {useState} from "react";
+import {useState,useEffect} from "react";
+import fetchData from './fetchdata';
 
 function App() {
 
-const [okok, setOkok] = useState();
-console.log(okok);
+const [data,setData] = useState();
+const [userInput, setUserInput] = useState();
+
+useEffect(()=>{
+  setData(fetchData(userInput))
+},[userInput])
+
+
+
   
   return (
     <div className="App">
-     <Input okok={okok} setOkok={setOkok}/>
+     <Input userInput={userInput} setUserInput={setUserInput} />
+     {data &&
+      <p>{data.cnt}</p>
+     }
     </div>
   );
 }
