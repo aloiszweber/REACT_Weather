@@ -1,10 +1,8 @@
 
 import {useRef} from "react";
-import {useState} from "react";
-import FetchData from './fetchdata';
 
 
-function Input ({userInput, setUserInput}) {
+const Input = ({userInput, setUserInput}) => {
     
 
     const inputRef = useRef();
@@ -12,8 +10,8 @@ function Input ({userInput, setUserInput}) {
     function cliclick () {
         const inputElement = inputRef.current;
         setUserInput(inputElement.value);
-
     }
+    
 
     return <div id="entrybox">
                 <input ref={inputRef} type="text" />
